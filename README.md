@@ -15,7 +15,7 @@ Project Overview:
         
         Why use it?
         
-        It's a simple but effective dataset for image classification, for CNNs.
+        It's a simple but effective dataset for image classification, ideal for CNNs.
   
 
 2. Model Building (CNN - Convolutional Neural Network)
