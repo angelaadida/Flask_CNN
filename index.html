@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion MNIST Classifier</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        input { margin: 20px; }
+        button { padding: 10px; background: blue; color: white; border: none; }
+        img { max-width: 200px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <input type="file" id="fileInput">
+    <button onclick="predict()">Predict</button>
+    <p id="result"></p>
+    <img id="preview" src="" />
+
+    <script>
+        function predict() {
+            let fileInput = document.getElementById('fileInput').files[0];
+            let formData = new FormData();
+            formData.append("file", fileInput);
+
+            fetch('/predict', { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => { 
+                document.getElementById('result').innerText = "Prediction: " + data.prediction;
+                document.getElementById('preview').src = URL.createObjectURL(fileInput);
+            });
+        }
+    </script>
+</body>
+</html>
